@@ -5,12 +5,10 @@ class UserProfile
     protected $userId;
     protected $memberId;
     protected $nickName;
-    protected $age;
-    protected $gender;
-    protected $birthDay;
-    protected $job;
-    protected $location;
     protected $aboutMe;
+    /*@var UserPrivateProfile*/
+    protected $privateProfile;
+
 
     public function __construct(...)
     {
@@ -27,16 +25,10 @@ class UserProfile
         return $memberId;
     }
 
-    public function getPrivateInfo()
-    {
-        return [
-            $this->getMemberId(),
-            $this->getAge(),
-            $this->getGender(),
-            $this->getBirthDay(),
-            $this->getJob(),
-            $this->getLocation(),
-        ];
+
+    public function getPrivateInfo(){
+        $idInfo = [$this->getMemberId()];
+        return array_merge($idInfo,$privateProfile->getPrivateInfo());
     }
 
     public function getIntroduction(){
@@ -49,7 +41,8 @@ class UserProfile
 
     public function isInLocation($location)
     {
-        return $this->getLocation() === $location;
+        return $this->privateProfile->isInLocation($location);
+
     }
 
     ...
