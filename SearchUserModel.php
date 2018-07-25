@@ -9,12 +9,8 @@ class SearchUserModel
 
         $ret = [];
         foreach($allUserProfileList as $userProfile) {
-            if($userProfile->getLocation() === $location) {
-                $ret[] = [
-                    $userProfile->getMemberId(),
-                    $userProfile->getNickName(),
-                    $userProfile->getAboutMe(),
-                ];
+            if($userProfile->isInLocation($location)) {
+                $ret[] = $userProfile->getIntroduction();
             }
         }
 

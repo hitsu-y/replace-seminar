@@ -27,5 +27,30 @@ class UserProfile
         return $memberId;
     }
 
+    public function getPrivateInfo()
+    {
+        return [
+            $this->getMemberId(),
+            $this->getAge(),
+            $this->getGender(),
+            $this->getBirthDay(),
+            $this->getJob(),
+            $this->getLocation(),
+        ];
+    }
+
+    public function getIntroduction(){
+        return [
+            $this->getMemberId(),
+            $this->getNickName(),
+            $this->getAboutMe(),
+        ];
+    }
+
+    public function isInLocation($location)
+    {
+        return $this->getLocation() === $location;
+    }
+
     ...
 }
