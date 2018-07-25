@@ -9,11 +9,7 @@ class FriendListModel
 
         $friendInfoList = [];
         foreach($friendProfileList as $friendProfile) {
-            $friendInfoList[] = [
-                $friendProfile->getMemberId(),
-                $friendProfile->getNickName(),
-                $friendProfile->getAboutMe(),
-            ];
+            $friendInfoList[] = $userProfile->getIntroduction();;
         }
 
         return $friendInfoList;
